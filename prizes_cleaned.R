@@ -1,4 +1,3 @@
-# data-raw/01_clean_prizes.R
 library(dplyr)
 library(tidytuesdayR)
 library(readr)
