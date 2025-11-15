@@ -1,0 +1,72 @@
+---
+title: "Discussion 3 Nov"
+format: html
+editor: visual
+---
+
+## TidyTuesday Dataset
+
+<https://github.com/rfordatascience/tidytuesday/blob/main/data/2025/2025-10-28/readme.md>
+
+```{r, warning=FALSE, message=FALSE}
+library(dplyr)
+library(tidytuesdayR)
+## install.packages("tidytuesdayR")
+
+tuesdata <- tidytuesdayR::tt_load('2025-10-28')
+#tuesdata <- tidytuesdayR::tt_load(2025, week = 43)
+
+prizes <- tuesdata$prizes
+
+```
+
+```{r}
+length(unique(prizes$degree_institution))
+```
+
+```{r}
+length(unique(prizes$prize_genre))
+```
+
+```{r}
+length(unique(prizes$prize_alias))
+```
+
+```{r}
+length(unique(prizes$prize_name))
+```
+
+```{r}
+length(unique(prizes$prize_id))
+```
+
+```{r}
+prizes |> count(uk_residence, person_role, ethnicity_macro)
+```
+
+```{r}
+length(unique(prizes$ethnicity_macro))
+```
+
+```{r}
+colnames(prizes)
+
+```
+
+## Deliverable
+
+-   Create a **Shiny app** with an interactive interface that allows users to easily explore the dataset using relevant filters.
+
+-   Your app should include multiple **web pages (tabs)** that address key questions about the dataset. These questions can be based on those discussed in class or ones you develop on your own — bonus points will be awarded for original questions that demonstrate insight or creativity.
+
+-   The app should include **data visualizations** that help communicate your findings clearly.
+
+-   When submitting, please provide a **GitHub repository** containing:
+
+    -   `app.R` (the main file to run the app)
+
+    -   Any additional scripts used in the app
+
+    -   The cleaned dataset
+
+    -   A working version of the app that can be launched directly from `app.R`
