@@ -5,7 +5,7 @@ library(readr)
 library(DT)
 library(forcats)
 
-# ---- Load cleaned data ----
+# Load cleaned data 
 prizes <- read_csv("prizes_clean.csv", show_col_types = FALSE)
 
 # Precompute choices for inputs
@@ -22,7 +22,7 @@ degree_choices  <- prizes %>%
   pull(highest_degree) %>%
   sort()
 
-# ---- UI ----
+# Add user interface
 ui <- fluidPage(
   titlePanel("British Literary Prizes Explorer"),
   
@@ -111,7 +111,7 @@ ui <- fluidPage(
   )
 )
 
-# ---- Server ----
+# Add server
 server <- function(input, output, session) {
   
   # Common reactive: filtered dataset based on sidebar filters
@@ -147,7 +147,7 @@ server <- function(input, output, session) {
     
     df
   })
-  
+  # Start adding tabs
   # Tab 1: Overview 
   output$plot_overview <- renderPlot({
     df <- filtered_prizes()
